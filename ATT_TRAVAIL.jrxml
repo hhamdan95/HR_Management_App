@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ATT_TRAVAIL" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="88726b07-5331-478c-889b-331f484473c7">
+	<property name="ireport.zoom" value="1.4641000000000006"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="63"/>
+	<parameter name="matricule" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="date_embauche" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="date_sortie" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT nom, prénom, emploi, TO_CHAR(date_embauche, 'DD/MM/YYYY'), TO_CHAR(date_sortie, 'DD/MM/YYYY') FROM employé
+WHERE matricule = $P{matricule}
+AND date_embauche = $P{date_embauche}
+AND date_sortie = $P{date_sortie}]]>
+	</queryString>
+	<field name="NOM" class="java.lang.String"/>
+	<field name="PRÉNOM" class="java.lang.String"/>
+	<field name="EMPLOI" class="java.lang.String"/>
+	<field name="TO_CHAR(DATE_EMBAUCHE,&apos;DD/MM/YYYY&apos;)" class="java.lang.String"/>
+	<field name="TO_CHAR(DATE_SORTIE,&apos;DD/MM/YYYY&apos;)" class="java.lang.String"/>
+	<title>
+		<band height="79" splitType="Stretch">
+			<image>
+				<reportElement x="0" y="0" width="67" height="51" uuid="12805064-bc84-4489-8ef0-e5ff5a056e34"/>
+				<imageExpression><![CDATA["C:\\Users\\Spyweeb\\Desktop\\Icons\\OFPPT-Logo-2.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="75" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="129" height="20" uuid="01971b10-d0f7-4799-b345-df90870aaa04"/>
+				<textElement>
+					<font fontName="Times New Roman" size="14"/>
+				</textElement>
+				<text><![CDATA[Société Exemple SA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="40" width="129" height="23" uuid="d056fb91-8dcc-4e4e-87ab-04c7397e9c39"/>
+				<textElement>
+					<font fontName="Times New Roman" size="14"/>
+				</textElement>
+				<text><![CDATA[10 000 RABAT]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="20" width="129" height="20" uuid="c5ddabe0-1b2c-4ddb-9fab-a0dbdc010294"/>
+				<textElement>
+					<font fontName="Times New Roman" size="14"/>
+				</textElement>
+				<text><![CDATA[RUE ASSENDIANE]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement x="106" y="10" width="348" height="37" uuid="a6245bfd-171f-49bc-97b7-165d317fd0a1"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Times New Roman" size="24" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[ATTESTATION DE TRAVAIL]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="555" height="125" uuid="ebe8a85a-9943-4991-a505-6b3a824997f0"/>
+				<textElement>
+					<font fontName="Times New Roman" size="16"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Je soussigné AHMED EL ALAOUI, agissant en qualité de Directeur Général, atteste par la présente que "+$F{NOM}+" "+$F{PRÉNOM}+" employée par la société Société Exemple SA en qualité de "+$F{EMPLOI}+" pour la période du "+$F{TO_CHAR(DATE_EMBAUCHE,'DD/MM/YYYY')}+" au "+$F{TO_CHAR(DATE_SORTIE,'DD/MM/YYYY')}+"."]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="317" splitType="Stretch">
+			<staticText>
+				<reportElement x="416" y="0" width="85" height="20" uuid="6cbfd2ca-2646-4a7f-86d7-a1cd6ecb6e3c"/>
+				<textElement>
+					<font fontName="Times New Roman" size="14"/>
+				</textElement>
+				<text><![CDATA[Fait à RABAT]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="435" y="20" width="120" height="20" uuid="8cb0b5db-17a6-402b-bc84-78a93097af2f"/>
+				<textElement>
+					<font fontName="Times New Roman" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="416" y="20" width="19" height="20" uuid="6d46f43e-db83-4fb8-871e-607e9782f59a"/>
+				<textElement>
+					<font fontName="Times New Roman" size="14"/>
+				</textElement>
+				<text><![CDATA[Le]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+</jasperReport>
