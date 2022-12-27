@@ -1,1 +1,1 @@
-# HR_Management_App
+# Java HR Management System
